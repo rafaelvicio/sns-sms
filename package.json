@@ -1,0 +1,33 @@
+{
+  "name": "sns-sms",
+  "version": "1.0.0",
+  "description": "Send an SMS through GitHub Actions",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "sucrase ./src -d ./dist --transforms imports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelvicio/sns-sms.git"
+  },
+  "keywords": [
+    "github",
+    "actions",
+    "awz",
+    "sns",
+    "sms"
+  ],
+  "author": "Rafael Vicio <rafaelvicio@icloud.com> (https://github.com/rafaelvicio)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaelvicio/sns-sms/issues"
+  },
+  "homepage": "https://github.com/rafaelvicio/sns-sms#readme",
+  "dependencies": {
+    "@actions/core": "^1.1.0",
+    "aws-sdk": "^2.630.0"
+  },
+  "devDependencies": {
+    "sucrase": "^3.12.1"
+  }
+}

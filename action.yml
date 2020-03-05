@@ -1,0 +1,28 @@
+name: "AWS SNS"
+author: "rafaelvicio"
+description: "Send an SMS from GitHub Actions using AWS SNS"
+inputs:
+  FROM_PHONE_NUMBER:
+    description: "Phone number to send the SMS to"
+    required: true
+  SMS_TEXT_CONTENT:
+    description: "The message you want to send"
+    required: true
+  AWS_REGION:
+    description: "A AWSN SNS Region. Can alternatively be stored in environment"
+    required: true
+  AWS_ACCESS_KEY_ID:
+    description: "A AWS SNS Key. Can alternatively be stored in environment"
+    required: true
+  AWS_SECRET_ACCESS_KEY:
+    description: "A AWS SNS Secret. Can alternatively be stored in environment"
+    required: true
+outputs:
+  messageID:
+    description: "The AWS SNS Message ID"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  color: "orange"
+  icon: "message-circle"
