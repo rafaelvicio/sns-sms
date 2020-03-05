@@ -28,13 +28,11 @@ async function run() {
 
   _core2.default.debug("Sending SMS");
 
-  const result = await publishTextPromise();
-
-  const messageID = 1;
+  const { MessageId } = await publishTextPromise();
 
   _core2.default.debug("SMS sent!");
 
-  return messageID;
+  return MessageId;
 }
 
 async function execute() {
