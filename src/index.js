@@ -13,15 +13,9 @@ AWS.config.update({
   secretAccessKey: AWS_SECRET_ACCESS_KEY
 });
 
-//us-east-1
-//AKIAQHRRSO6JTAOIFSH6
-//8ud7NHsYDGdl9b8NAght2Bc2SyM01MoQt/fA0z4L
-
 async function run() {
   const FROM_PHONE_NUMBER = core.getInput("FROM_PHONE_NUMBER");
   const SMS_TEXT_CONTENT = core.getInput("SMS_TEXT_CONTENT");
-
-  //+5561981359421
 
   const params = {
     PhoneNumber: FROM_PHONE_NUMBER,
@@ -35,15 +29,6 @@ async function run() {
   core.debug("Sending SMS");
 
   const result = await publishTextPromise();
-  console.log("result", result);
-
-  // publishTextPromise
-  //   .then(function(data) {
-  //     console.log("MessageID is " + data.MessageId);
-  //   })
-  //   .catch(function(err) {
-  //     console.error(err, err.stack);
-  //   });
 
   const messageID = 1;
 
