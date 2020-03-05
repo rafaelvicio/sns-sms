@@ -1,33 +1,40 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _core = require('@actions/core'); var _core2 = _interopRequireDefault(_core);
 var _awssdk = require('aws-sdk'); var _awssdk2 = _interopRequireDefault(_awssdk);
-// import github from "@actions/github";
+
+const AWS_REGION = _core2.default.getInput("AWS_REGION") || process.env.AWS_REGION;
+const AWS_ACCESS_KEY_ID =
+  _core2.default.getInput("AWS_ACCESS_KEY_ID") || process.env.AWS_ACCESS_KEY_ID;
+const AWS_SECRET_ACCESS_KEY =
+  _core2.default.getInput("AWS_SECRET_ACCESS_KEY") || process.env.AWS_SECRET_ACCESS_KEY;
 
 _awssdk2.default.config.update({
-  region: "us-east-1",
-  accessKeyId: "AKIAQHRRSO6JTAOIFSH6",
-  secretAccessKey: "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"
+  region: AWS_REGION,
+  accessKeyId: AWS_ACCESS_KEY_ID,
+  secretAccessKey: AWS_SECRET_ACCESS_KEY
 });
 
-//AKIAQHRRSO6JTAOIFSH6
-//8ud7NHsYDGdl9b8NAght2Bc2SyM01MoQt/fA0z4L
-
 async function run() {
+  const FROM_PHONE_NUMBER = _core2.default.getInput("FROM_PHONE_NUMBER");
+  const SMS_TEXT_CONTENT = _core2.default.getInput("SMS_TEXT_CONTENT");
+
   const params = {
-    Message: "Esse é um teste" /* required */,
-    PhoneNumber: "+5561981359421"
+    PhoneNumber: FROM_PHONE_NUMBER,
+    Message: SMS_TEXT_CONTENT
   };
 
   const publishTextPromise = new _awssdk2.default.SNS({ apiVersion: "2010-03-31" })
     .publish(params)
     .promise();
 
-  publishTextPromise
-    .then(function(data) {
-      console.log("MessageID is " + data.MessageId);
-    })
-    .catch(function(err) {
-      console.error(err, err.stack);
-    });
+  _core2.default.debug("Sending SMS");
+
+  const result = await publishTextPromise();
+
+  const messageID = 1;
+
+  _core2.default.debug("SMS sent!");
+
+  return messageID;
 }
 
 async function execute() {
