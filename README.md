@@ -15,7 +15,7 @@ Send an SMS from GitHub Actions.
 
 ```yml
 - name: "Sending SMS Notification"
-  uses: twilio-labs/actions-sms@v1
+  uses: rafaelvicio/sns-sms@1.0.1
   with:
     FROM_PHONE_NUMBER: "+5561123456789"
     SMS_TEXT_CONTENT: "Hello from AWS SNS"
@@ -43,15 +43,15 @@ A AWS Region. Can alternatively be stored in environment
 
 A AWS Access Key ID. Can alternatively be stored in environment
 
-### `TWILIO_API_SECRET`
+### `AWS_SECRET_ACCESS_KEY`
 
-A Twilio API Secret. Can alternatively be stored in environment
+A AWS Secret Access Key. Can alternatively be stored in environment
 
 ## Outputs
 
-### `messageSid`
+### `MessageId`
 
-The SID of the [message resource](https://www.twilio.com/docs/sms/api/message-resource#message-properties) associated with the SMS sent.
+The SID of the [message resource](https://docs.aws.amazon.com/pt_br/sns/latest/dg/sns-msg-status.html) associated with the SMS sent.
 
 ## Contributing
 
