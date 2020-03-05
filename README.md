@@ -1,4 +1,4 @@
-# Twilio SMS GitHub Action
+# SNS SMS GitHub Action
 
 Send an SMS from GitHub Actions.
 
