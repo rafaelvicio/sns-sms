@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/rafaelvicio/sns-sms#readme",
   "dependencies": {
-    "@actions/core": "^1.1.0",
+    "@actions/core": "^1.2.6",
     "aws-sdk": "^2.630.0"
   },
   "devDependencies": {
